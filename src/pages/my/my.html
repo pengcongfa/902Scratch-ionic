@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      我的
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="card-background-page">
+
+  <ion-list no-lines>
+
+    <div *ngIf="!logined">
+      <ion-grid>
+        <ion-row style="display:flex; justify-content: center">
+        <ion-col col-4><img src="assets/img/user_img.png" style="width: 65px; height: 65px"></ion-col>
+        <ion-col col-8 on-tap="move_to_login()">
+        <h2 style="">注册/登陆</h2>
+        </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div *ngIf="logined">
+      <ion-grid>
+        <ion-row style="display:flex; justify-content: center" on-tap="move_to_PersonalCenter()">
+          <ion-col col-4><img src="{{PersonalImage}}" style="width: 65px; height: 65px"/></ion-col>
+          <ion-col col-8>
+            <h2 style="">{{ username }}</h2>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+
+    <button ion-item on-tap="move_to_favorite()" *ngIf="logined">
+      我的收藏
+    </button>
+    <button ion-item on-tap="move_to_about()">
+      关于我们
+    </button>
+    <button ion-item >
+      积分说明
+    </button>
+    <button ion-item on-tap="move_to_help()">
+      帮助
+    </button>
+
+    <button ion-item on-tap="move_to_setting()">
+      设置
+    </button>
+
+    <button ion-item on-tap="logout()">
+      退出登录
+    </button>
+  </ion-list>
+
+
+
+</ion-content>

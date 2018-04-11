@@ -1,0 +1,77 @@
+<!--
+  Generated template for the ProductsListViewPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>作品</ion-title>
+    <!--<ion-buttons end>-->
+      <!--<button ion-button icon-only (click)="presentPopover($event)">-->
+        <!--<ion-icon name="more"></ion-icon>-->
+      <!--</button>-->
+    <!--</ion-buttons>-->
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingText="下拉刷新"
+      refreshingText="刷新中">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-searchbar #q (keyup.enter)="search(q.value)"></ion-searchbar>
+
+
+  <ion-item>
+    <ion-label >筛选</ion-label>
+    <ion-select [(ngModel)]="orderType" interface="popover" (ionChange)="orderShow()">
+      <ion-option value="time-Order" >最新排序</ion-option>
+      <ion-option value="name-Order">名称排序</ion-option>
+      <ion-option value="hit-Order">点击排序</ion-option>
+      <ion-option value="like-Order">点赞排序</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-card *ngFor="let product of products" on-tap="onTap(product.id)" [ngClass]="cssname">
+    <img src={{product.image}} *ngIf="!disable_img"/>
+    <ion-card-content>
+      <ion-card-title>
+        作品名称：{{product.name}}
+      </ion-card-title>
+      <p>
+        作者： {{product.author}}
+      </p>
+    </ion-card-content>
+    <ion-row no-padding>
+      <ion-col>
+        <button ion-button clear small color="blue" icon-start>
+          <ion-icon name='star'></ion-icon>
+          点击数：{{product.hit}}
+        </button>
+      </ion-col>
+      <ion-col text-center>
+        <button ion-button clear small color="blue" icon-start>
+          <ion-icon name='thumbs-up'></ion-icon>
+          点赞：{{product.like}}
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <ion-infinite-scroll (ionInfinite)="infiniteScroll($event)" class="animated bounceIn">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="加载中">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+
+
+</ion-content>

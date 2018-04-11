@@ -1,0 +1,67 @@
+<!--
+  Generated template for the LessonPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{infos?.name}}</ion-title>
+  </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="lesson_segment">
+      <ion-segment-button value="introduction">
+        课程介绍
+      </ion-segment-button>
+      <ion-segment-button value="TOC">
+        目录
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding scroll="true" overflow-scroll="true">
+
+  <div [ngSwitch]="lesson_segment">
+
+    <div *ngSwitchCase="'introduction'">
+
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="thumbs-up"></ion-icon>
+            <div>点赞</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small on-tap="playSound()">
+            <ion-icon name="volume-up"></ion-icon>
+            <div>播放语音</div>
+          </button>
+        </ion-col>
+      </ion-row>
+
+
+      <iframe id="iframe" class="iframe" [src]="safe_url"></iframe>
+
+
+    </div>
+    <ion-list >
+
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'TOC'">
+      <ion-item *ngFor="let info of TOCs; let i = index" [attr.data-index]="i"
+                on-tap="onTap(info.chapter_id)" >
+        <p>{{info.chapter_id}}、{{info.name}}</p>
+      </ion-item>
+
+    </ion-list>
+  </div>
+
+</ion-content>

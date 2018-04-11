@@ -1,0 +1,25 @@
+#play_div {
+  .iframe {
+    top: 0;
+    left: 0;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    border: none ;
+
+    //android:
+    //width:100%
+    //android
+
+    //ios:
+    width:1px;
+    min-width:100%;
+    *width:100%;
+    //ios
+
+
+  }
+  ::-webkit-scrollbar {
+ //display: none;
+  }
+}

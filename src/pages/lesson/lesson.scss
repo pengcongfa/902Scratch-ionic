@@ -1,0 +1,14 @@
+page-lesson {
+  .iframe {
+    width: 92%;
+    height: 100%;
+    position: absolute;
+    overflow: auto;
+    border: none;
+  }
+
+  ::-webkit-scrollbar{
+    display:none;
+  }
+
+}

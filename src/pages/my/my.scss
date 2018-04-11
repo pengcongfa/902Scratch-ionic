@@ -1,0 +1,21 @@
+page-about {
+  .name {
+    font-size:20px;
+    font-family: 黑体;
+  }
+
+  .item ion-thumbnail {
+    min-width: 5rem;
+    min-height: 5rem;
+    img {
+      width: 90px;
+      height: 120px;
+    }
+  }
+
+  ::-webkit-scrollbar{
+    display:none;
+  }
+}
+
+

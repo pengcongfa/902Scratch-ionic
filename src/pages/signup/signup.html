@@ -1,0 +1,65 @@
+<!--
+  Generated template for the SignupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>注册</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="signupForm" (ngSubmit)="registry()">
+    <ion-list inset>
+      <ion-item>
+        <ion-label>用户名</ion-label>
+        <ion-input type="text"  formControlName="username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>真实姓名</ion-label>
+        <ion-input type="text"  formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>密码</ion-label>
+        <ion-input type="password" value="" formControlName="password1"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>密码确认</ion-label>
+        <ion-input type="password" value="" formControlName="password2"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>性别</ion-label>
+        <ion-select type="text" formControlName="sex">
+          <ion-option value="男">男</ion-option>
+          <ion-option value="女">女</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>生日</ion-label>
+        <ion-datetime type="text" displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" formControlName="birthday"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>居住地</ion-label>
+        <ion-multi-picker item-content formControlName="local_province" [multiPickerColumns]="cityColumns" [cancelText]="'取消'" [doneText]="'完成'"></ion-multi-picker>
+      </ion-item>
+    </ion-list>
+    <div padding>
+      <button ion-button type="submit" color="danger" block>同意协议并注册</button>
+    </div>
+    <ion-list>
+      <ion-item padding="true" class="eula">
+        已阅读并同意以下协议:
+        <a (click)="eula()" >《拓拼拼服务协议》</a>
+      </ion-item>
+    </ion-list>
+
+
+  </form>
+
+
+</ion-content>

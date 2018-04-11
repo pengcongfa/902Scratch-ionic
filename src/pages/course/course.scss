@@ -1,0 +1,18 @@
+page-home {
+  img {
+    margin: 5%;
+    align: "center";
+    width: 90%;
+    height: auto !important;
+    max-width:100%;
+  }
+
+  ion-card{
+    border-top: 3px solid #488aff;
+  }
+
+  ::-webkit-scrollbar{
+    display:none;
+  }
+
+}

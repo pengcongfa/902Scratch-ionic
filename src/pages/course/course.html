@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>课程</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card *ngFor="let lesson of lessons" on-tap="onTap(lesson.lesson_id)" [ngClass]="cssname">
+    <img [src]="lesson.image" *ngIf="!disable_img"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{lesson.name}}
+      </ion-card-title>
+      <p>
+        {{lesson.short_introduction}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,44 @@
+<!--
+  Generated template for the PersonalCenterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>个人中心</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <!--<ion-item >-->
+    <!--<img src="{{PersonalImage}}">-->
+  <!--</ion-item>-->
+  <h1>个人信息</h1>
+  <ion-item>
+  <img class=p_image src="{{PersonalImage}}">
+  </ion-item>
+  <ion-card>
+    <ion-item>
+     <h2> 用户名：{{PersonalInfo?.username}}</h2>
+      <h2>性别： {{PersonalInfo?.sex}}</h2>
+      <h2>年级： {{PersonalInfo?.grade}}</h2>
+      <h2>账户创建时间： {{PersonalInfo?.created_at}}</h2>
+      <h2>个人介绍： {{PersonalInfo?.self_introduction}}</h2>
+    </ion-item>
+  </ion-card>
+  <h1>作品列表</h1>
+  <ion-list>
+    <ion-item *ngFor="let PersonalProd of PersonalProductlist" on-tap="move_to_production_detail(PersonalProd.id)">
+      <ion-thumbnail item-start>
+        <img src="{{PersonalProd.image}}">
+      </ion-thumbnail>
+      <h2>{{PersonalProd.name}}</h2>
+      <p>{{PersonalProd.author}}</p>
+      <button ion-button clear item-end>View</button>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,38 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>登录</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <ion-list inset>
+      <ion-item>
+        <ion-label>用户名</ion-label>
+        <ion-input type="text"  formControlName="username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>密码</ion-label>
+        <ion-input type="password" value="" formControlName="password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div padding>
+      <button ion-button type="submit" color="danger" block>登&nbsp;录</button>
+    </div>
+  </form>
+  <ion-row padding-left padding-right class="forgetPwd">
+    <ion-col>
+      <a (click)="forgetPwd()">忘记密码？</a>
+      <a (click)="register()">注册麦宝Scratch</a>
+    </ion-col>
+  </ion-row>
+</ion-content>

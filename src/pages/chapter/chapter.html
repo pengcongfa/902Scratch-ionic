@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{infos?.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding (swipe)="swipeEvent($event)">
+
+  <ion-row>
+    <ion-col>
+      <button ion-button icon-left clear small>
+        <ion-icon name="thumbs-up"></ion-icon>
+        <div>点赞</div>
+      </button>
+    </ion-col>
+    <ion-col>
+      <button ion-button icon-left clear small on-tap="playSound()">
+        <ion-icon name="volume-up"></ion-icon>
+        <div>播放语音</div>
+      </button>
+    </ion-col>
+  </ion-row>
+
+  <div [innerHTML]="content"></div>
+
+
+</ion-content>

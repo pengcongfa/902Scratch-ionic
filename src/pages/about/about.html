@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      关于我们
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item *ngFor="let info of infos; let i = index" [attr.data-index]="i"
+              on-tap="onTap(i)" >
+      <ion-thumbnail item-start>
+        <img src="assets/img/{{info.name}}.jpg" class="photo">
+      </ion-thumbnail>
+      <h2 class="name">{{info.name}}</h2>
+      <p>{{info.company}}<br>{{info.title}}</p>
+      <!--<button ion-button clear item-end>View</button>-->
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

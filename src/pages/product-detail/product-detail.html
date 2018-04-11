@@ -1,0 +1,136 @@
+
+<ion-header>
+
+  <ion-navbar>
+      <ion-title>{{production_detail?.name}}</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="presentPopover($event)">
+          <ion-icon name="more"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="production_segment">
+      <ion-segment-button value="introduction">
+        作品详情
+      </ion-segment-button>
+      <ion-segment-button value="play">
+        Let's play!
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingText="下拉刷新"
+      refreshingText="刷新中">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div [ngSwitch]="production_segment">
+
+    <div *ngSwitchCase="'introduction'">
+
+      <ion-card>
+
+
+        <ion-item>
+          <ion-avatar item-start on-tap="move_to_PersonalCenter()">
+            <img src="assets/img/user_img.png" style="width: 65px; height: 65px"/>
+          </ion-avatar>
+          <h2>{{production_detail?.author}}</h2>
+          <p>{{production_detail?.update_time}}</p>
+        </ion-item>
+
+        <!--<ion-row no-padding>-->
+        <img src="{{production_detail?.image}}"/>
+        <!--</ion-row>-->
+        <ion-row no-padding>
+          <ion-col >
+            <button ion-button clear small color="blue" icon-start>
+              <ion-icon name='star'></ion-icon>
+              <div>收藏:{{production_info?.favorite_count}}</div>
+            </button>
+          </ion-col>
+
+          <ion-col text-center>
+            <button ion-button clear small color="danger" icon-start>
+              <ion-icon name='thumbs-up'></ion-icon>
+              <div>点赞:{{production_detail?.like}}</div>
+            </button>
+          </ion-col>
+
+          <ion-col text-right>
+            <button ion-button clear small color="dark" icon-start>
+              <ion-icon name='flag'></ion-icon>
+              标签
+            </button>
+          </ion-col>
+        </ion-row>
+
+        <ion-card-header>
+          作品介绍
+        </ion-card-header>
+        <ion-card-content>
+          {{production_detail?.description}}
+        </ion-card-content>
+
+        <ion-card-header>
+          操作说明
+        </ion-card-header>
+        <ion-card-content>
+          {{production_detail?.operation_instructions}}
+        </ion-card-content>
+
+        <div *ngIf="!logined">
+          <ion-card-header>
+            请登录后评论
+          </ion-card-header>
+        </div>
+
+
+        <div *ngIf="logined">
+          <ion-card-header>
+            评论
+          </ion-card-header>
+          <ion-card-content>
+            <ion-textarea placeholder=" 留言" [(ngModel)]="selfcomment" >
+
+            </ion-textarea>
+          </ion-card-content>
+          <ion-row>
+            <ion-col text-center>
+              <button ion-button style="margin: auto" (click)="subComment()">提交</button>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-card>
+
+
+      <div *ngFor="let comment_node of comments">
+
+        <tree-view [node]="comment_node">
+        </tree-view>
+      </div>
+
+
+    </div >
+
+    <div *ngSwitchCase="'play'" id="play_div" >
+
+    <!-- ios: scrolling="no" -->
+     <iframe id="iframe" class="iframe" [src]="safe_url" width="100%" scrolling="no" ></iframe>
+    </div>
+  </div>
+
+</ion-content>
+
+
+
+

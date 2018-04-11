@@ -1,0 +1,8 @@
+{
+  "name": "902Scratch-ionic",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

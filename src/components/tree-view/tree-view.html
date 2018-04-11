@@ -1,0 +1,9 @@
+<div on-tap="tap_comment()">
+  {{node?.comment}}
+  {{node.submit_date}}
+</div>
+<ul>
+  <li *ngFor="let node of node?.children">
+    <tree-view  [node]="node"></tree-view>
+  </li>
+</ul>

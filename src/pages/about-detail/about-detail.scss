@@ -1,0 +1,20 @@
+page-about-detail {
+  //.ion-card {
+  //  img {
+  //    width: 90px;
+  //    height: 120px;
+  //  }
+  //}
+
+  img {
+    margin: 15px;
+    width: 150px;
+    height: 200px;
+    text-align: center;
+  }
+
+  ::-webkit-scrollbar{
+    display:none;
+  }
+
+}
